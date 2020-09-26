@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Space Travel Calculator</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body>
+
+	<div class="main container">
+		<h1> Prepare for travel : </h1>
+		<form>
+			<div class="form-row">
+				<div class="col-md-10 col-lg -10 col-sm-10 mb-3">
+					<input type="text" id="acceleration" placeholder="Spaceship Acceleration" class="form-control"
+						value="20000">
+				</div>
+				<div class="col-md-2 col-lg-2  col-sm-2 mb-3">
+					<select id="acc-units" class="custom-select">
+						<option value="m/s²" selected> m/s²</option>
+						<option value="g">g</option>
+						<option value="ft/s²">ft/s²</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="col-md-10 col-lg-10 col-sm-10 mb-3">
+					<input type="text" id="mass" placeholder="Spaceship mass" class="form-control" value="1000">
+				</div>
+				<div class="col-md-2 col-lg-2 col-sm-2 mb-3">
+					<select id="mass-units" class="custom-select">
+						<option value="kg"> kg</option>
+						<option value="t"> tons </option>
+						<option value="Ib"> Ib</option>
+						<option value="stone">stones</option>
+						<option value="USton"> US ton</option>
+						<option value="LongTon"> imperial tons </option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="col-md-8 col-lg-6 col-sm-6 mb-3">
+					<select id="destination" class="custom-select">
+						<option value="">Destination</option>
+						<option value="Star Or Galaxy">Star Or Galaxy</option>
+						<option value="Exoplanet">Exoplanet</option>
+					</select>
+				</div>
+				<div id="stars-or-exoplanets" class="col-md-6 col-lg-6 col-sm-6 mb-3">
+
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="col-md-10 col-lg-10 col-sm-10 mb-3">
+					<input type="text" placeholder="Distance" id="distance" class="form-control" value="5000000">
+				</div>
+				<div class="col-md-2 col-lg-2 col-sm-2 mb-3">
+					<select id="dist-units" class="custom-select">
+						<option value="m" selected>m</option>
+						<option value="km">km</option>
+						<option value="ft">ft</option>
+						<option value="yd">yd</option>
+						<option value="mile">mile</option>
+						<option value="ly">ly</option>
+						<option value="au">au</option>
+						<option value="parsec">parsec</option>
+
+					</select>
+				</div>
+			</div>
+
+			<div class="form-row mb-3">
+				<select id="aim" class="custom-select">
+					<option value="">Aim</option>
+					<option value="stop">Arrive at destination and stop</option>
+					<option value="full-speed">Arrive at destination at full speed</option>
+				</select>
+			</div>
+
+			<div class="form-row mb-3">
+				<select id="model" class="custom-select">
+					<option value="">Universe Model</option>
+					<option value="einstein">Einstein's universe</option>
+					<option value="newton">
+						Newton's universe
+					</option>
+				</select>
+			</div>
+
+		</form>
+
+		<h1> Journey : </h1>
+		<div class="form-row js-time">
+			<div class="col-md-10 col-lg-10 col-sm-10">
+				<label>
+					Time passed :
+				</label>
+				<input type="text" class="form-control" placeholder="Time passed" id="time" readOnly>
+			</div>
+
+			<div class="col-md-2 col-lg-2 col-sm-2 mt-4">
+				<select class="custom-select" id="time-units">
+					<option value="sec">sec</option>
+					<option value="min">min</option>
+					<option value="hrs">hrs</option>
+					<option value="dys">dys</option>
+					<option value="week">week</option>
+					<option value="month">month</option>
+					<option value="yrs">yrs</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="form-row">
+			<div class="col-md-10 col-lg-10 col-sm-10">
+				<label>
+					Maximum velocity :
+				</label>
+				<input type="text" class="form-control" placeholder="Maximum Vellocity" id="velocity" readOnly>
+			</div>
+			<div class="col-md-2 col-lg-2 col-sm-2 mt-4">
+				<select class="custom-select" id="velocity-units">
+					<option value="m/s">m/s</option>
+					<option value="km/h">km/h</option>
+					<option value="ft/s">ft/s</option>
+					<option value="mile/h">mile/h</option>
+					<option value="km/s">km/s</option>
+					<option value="mile/s">mile/s</option>
+					<option value="c">c</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="form-row">
+			<div class="col-md-10 col-lg-10 col-sm-10">
+				<label>
+					Required fuel mass :
+				</label>
+				<input type="text" class="form-control" 
+				placeholder="Required fuel mass" id="fuel" readOnly>
+			</div>
+
+			<div class="col-md-2 col-lg-2 col-sm-2 mt-4">
+				<select id="fuel-units" class="custom-select">
+					<option value="kg"> Kg</option>
+					<option value="t"> tons </option>
+					<option value="Ib"> Ib</option>
+					<option value="stone">stones</option>
+					<option value="USton"> US ton</option>
+					<option value="LongTon"> imperial tons </option>
+				</select>
+			</div>
+
+		</div>
+	</div>
+
+	<script type="text/javascript" src="data.js"></script>
+	<script type="text/javascript" src="unit_convrt_funcs.js"></script>
+	<script src="handle_view_change.js"></script>
+	<script type="text/javascript" src="results_calc_funcs.js"></script>
+	<script src="handle_unit_change.js"></script>
+	<script src="on_aim_change.js"></script>
+	<script src="on_universe_model_change.js"></script>
+</body>
+
+</html>
