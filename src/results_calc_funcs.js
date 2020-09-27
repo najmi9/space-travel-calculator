@@ -76,33 +76,31 @@ const calculateNewtonStop = () => {
         return ((m * a * d / (2*c * c)) + Math.sqrt(a * d) * m / c);
     };
       // advanced mode 
-        const maxKE =  (d, a, m) =>  {
-            const v = veloCulculator(d, a);
-            return (m * v * v / 2);
-        };
-        const fuelEE = (d, a, m) =>{
-            const fuel = fuelCulculator(d, a, m);
-            return fuel * c * c;
-        }
-        getResult(timeCulculator, veloCulculator, fuelCulculator, null, maxKE, fuelEE);
-
+    const maxKE =  (d, a, m) =>  {
+        const v = veloCulculator(d, a);
+        return (m * v * v / 2);
+    };
+    const fuelEE = (d, a, m) =>{
+        const fuel = fuelCulculator(d, a, m);
+        return fuel * c * c;
+    }
+    getResult(timeCulculator, veloCulculator, fuelCulculator, null, maxKE, fuelEE);
 }
 
 const calculateNewtonSpeed = () => {
     const timeCulculator = (d, a) => (Math.sqrt(2 * d / a));
     const veloCulculator = (d, a) => (Math.sqrt(2 * a * d));
-  
     const fuelCulculator = (d, a, m) => ((m * a * d / (2*c * c)) + Math.sqrt(a * d) * m / c);
     //  advanced mode  
-        const maxKE =  (d, a, m) =>  {
-            const v = veloCulculator(d, a);
-            return (m * v * v / 2);
-        };
-        const fuelEE = (d, a, m) =>{
-            const fuel = fuelCulculator(d, a, m);
-            return fuel * c * c;
-        }
-        getResult(timeCulculator, veloCulculator, fuelCulculator, null, maxKE, fuelEE);
+    const maxKE =  (d, a, m) =>  {
+        const v = veloCulculator(d, a);
+        return (m * v * v / 2);
+    };
+    const fuelEE = (d, a, m) =>{
+        const fuel = fuelCulculator(d, a, m);
+        return fuel * c * c;
+    }
+    getResult(timeCulculator, veloCulculator, fuelCulculator, null, maxKE, fuelEE);
 
 }
 
@@ -121,23 +119,23 @@ const calculateEinsteinSpeed = () => {
         return m * (Math.exp(a * T / c) - 1)
     };
 
-        const beta = (d, a) =>{
-            const v = veloCulculator(d, a);
-            return v/c;
-        }
-        const gamma = (d,a)=>{
-            const b = beta(d, a);
-            return 1/Math.sqrt(1-(b*b));
-        }
-         const maxKE =  (d, a, m) =>  {
-            const g = gamma(d, a);
-            return ( m*c*c * (g - 1));
-        };
-        const fuelEE = (d, a, m) =>{
-            const fuel = fuelCulculator(d, a, m);
-            return fuel * c * c;
-        }
-        getResult(timeInEarthCulculator, veloCulculator, fuelCulculator, timeInSpaceshipCalculator, maxKE, fuelEE, beta, gamma);
+    const beta = (d, a) =>{
+        const v = veloCulculator(d, a);
+        return v/c;
+    }
+    const gamma = (d,a)=>{
+        const b = beta(d, a);
+        return 1/Math.sqrt(1-(b*b));
+    }
+    const maxKE =  (d, a, m) =>  {
+        const g = gamma(d, a);
+        return ( m*c*c * (g - 1));
+    };
+    const fuelEE = (d, a, m) =>{
+        const fuel = fuelCulculator(d, a, m);
+        return fuel * c * c;
+    }
+    getResult(timeInEarthCulculator, veloCulculator, fuelCulculator, timeInSpaceshipCalculator, maxKE, fuelEE, beta, gamma);
 
 }
 
@@ -154,25 +152,22 @@ const catculateEinsteinStop = () => {
         const T = timeInSpaceshipCalculator(d, a);
         return m * (Math.exp(a * T / c) - 1)
     };
-
-        const beta = (d, a) =>{
-            const v = veloCulculator(d, a);
-            return v/c;
-        }
-        const gamma = (d,a)=>{
-            const b = beta(d, a);
-            return 1/Math.sqrt(1-(b*b));
-        }
-         const maxKE =  (d, a, m) =>  {
-            const g = gamma(d, a);
-            return ( m*c*c * (g - 1));
-        };
-        const fuelEE = (d, a, m) =>{
-            const fuel = fuelCulculator(d, a, m);
-            return fuel * c * c;
-        }
-        getResult(timeInEarthCulculator, veloCulculator, fuelCulculator, timeInSpaceshipCalculator, maxKE, fuelEE, beta, gamma);
-        
-
+    const beta = (d, a) =>{
+        const v = veloCulculator(d, a);
+        return v/c;
+    }
+    const gamma = (d,a)=>{
+        const b = beta(d, a);
+        return 1/Math.sqrt(1-(b*b));
+    }
+    const maxKE =  (d, a, m) =>  {
+        const g = gamma(d, a);
+        return ( m*c*c * (g - 1));
+    };
+    const fuelEE = (d, a, m) =>{
+        const fuel = fuelCulculator(d, a, m);
+        return fuel * c * c;
+    }
+    getResult(timeInEarthCulculator, veloCulculator, fuelCulculator, timeInSpaceshipCalculator, maxKE, fuelEE, beta, gamma);
 }
 

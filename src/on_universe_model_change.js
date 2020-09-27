@@ -20,7 +20,7 @@ document.querySelector("select#model").onchange = ({ currentTarget }) => {
 
   if (currentTarget.value == "newton" && aim == 'stop') {
     // results_calc_funcs.js
-    calculateNewtonStop()
+    calculateNewtonStop();
 
   } else if (currentTarget.value == "newton" && aim == "full-speed") {
     // results_calc_funcs.js
@@ -33,7 +33,7 @@ document.querySelector("select#model").onchange = ({ currentTarget }) => {
     calculateEinsteinSpeed();
   } else if (currentTarget.value == "einstein" && aim == "stop") {
      // on top
-    listenChange()
+    listenChange();
     // results_calc_funcs.js
     catculateEinsteinStop();
   }
