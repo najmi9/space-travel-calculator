@@ -73,20 +73,21 @@ const changeResultView = (currentTarget) => {
 			return;
 		}
 		const div = document.querySelector("div.js-time");
-		div.firstElementChild.firstElementChild.innerHTML = "Time passed in Earth"
-		div.firstElementChild.lastElementChild.setAttribute("placeholder", "time passed in earth")
+		div.firstElementChild.innerHTML = "Time passed in Earth"
+		div.children[1].firstElementChild.setAttribute("placeholder", "time passed in earth")
 		const cln = div.cloneNode(true);
-		cln.firstElementChild.firstElementChild.innerHTML = "Time passed in spaceship"
-		cln.firstElementChild.lastElementChild.setAttribute("id", "time-in-spaceship")
-		cln.firstElementChild.lastElementChild.setAttribute("placeholder", "Time passed in spaceship")
-		cln.lastElementChild.firstElementChild.setAttribute("id", "time-in-spaceship-units")
+
+		cln.firstElementChild.innerHTML = "Time passed in spaceship"
+		cln.children[1].firstElementChild.setAttribute("id", "time-in-spaceship")
+		cln.children[1].firstElementChild.setAttribute("placeholder", "Time passed in spaceship")
+		cln.children[2].firstElementChild.setAttribute("id", "time-in-spaceship-units")
 		div.parentNode.insertBefore(cln, div)
 	} else {
 		if (document.querySelector("input#time-in-spaceship")) {
 			document.querySelector("input#time-in-spaceship").parentElement.parentElement.remove()
 			const div = document.querySelector("div.js-time");
-			div.firstElementChild.firstElementChild.innerHTML = "Time passed "
-			div.firstElementChild.lastElementChild.setAttribute("placeholder", "Time passed ")
+			div.firstElementChild.innerHTML = "Time passed "
+			div.children[1].firstElementChild.setAttribute("placeholder", "Time passed ")
 		}
 	}
 }
