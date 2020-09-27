@@ -20,8 +20,6 @@ const handleMassUnitChange = (newUnit, previousUnit) => {
 	return  kg[previousUnit] / kg[newUnit];
 };
 const handleDistUnitChange = (newUnit, previousUnit) => {
-	console.log(newUnit, previousUnit);
-	
 	if (previousUnit == newUnit) {
 		return 1;
 	}
@@ -75,3 +73,7 @@ const handleEnergyUnit = (newUnit, previousUnit) =>{
   }
   return j[previousUnit] / j[newUnit];
 }
+
+/*module.exports = {
+	handleEnergyUnit
+}*/

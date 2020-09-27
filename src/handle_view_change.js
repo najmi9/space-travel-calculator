@@ -34,6 +34,9 @@ dest.onchange = ({ currentTarget }) => {
 
 		select.onchange = ({ currentTarget }) => {
 			handleTargetChange(currentTarget.value);
+			const selectedModel = document.querySelector("select#model").value;
+            const selectedAim = document.querySelector("select#aim").value;
+            calculResult(selectedAim, selectedModel);
 		}
 	} else if (currentTarget.value == "Star Or Galaxy") {
 		if (selectStar) {
@@ -50,6 +53,9 @@ dest.onchange = ({ currentTarget }) => {
 
 		select.onchange = ({ currentTarget }) => {
 			handleTargetChange(currentTarget.value);
+			const selectedModel = document.querySelector("select#model").value;
+            const selectedAim = document.querySelector("select#aim").value;
+            calculResult(selectedAim, selectedModel);
 		}
 	}
 	element.setAttribute("class", "form-group");

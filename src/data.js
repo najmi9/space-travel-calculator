@@ -26,3 +26,35 @@ const exoplanets = [
     { 'exoplanet': 'Kepler-442b', 'distance': 12219440120000000000 },
     { 'exoplanet': 'Kepler-443b', 'distance': 24030178000000000000 }
 ];
+//get user data and selected units
+function getDataAndUnits() {
+     //----part1
+    const a = parseFloat(document.querySelector("input#acceleration").value.replaceAll(',',''));
+    const AccUnit = document.querySelector("select#acc-units").value;
+    const m = parseFloat(document.querySelector("input#mass").value.replaceAll(',',''));
+    const MassUnit = document.querySelector("select#mass-units").value;
+    const d = parseFloat(document.querySelector("input#distance").value.replaceAll(',',''));
+    const DistUnit = document.querySelector("select#dist-units").value;
+ 
+    // -----part 3 -----
+    const timeUnit = document.querySelector("select#time-units").value;
+    const veloUnit = document.querySelector("select#velocity-units").value;
+    const fuelUnit = document.querySelector("select#fuel-units").value;
+
+    // get choosen units;
+    const fuelEnergyUnit = document.querySelector("select#fuel-energy-units").value;
+    const maxKEUnit = document.querySelector("select#max-kenergy-units").value;
+
+   return {
+     'a':a, 'AccUnit':AccUnit, 'm':m, 'MassUnit':MassUnit,
+     'd':d, 'DistUnit':DistUnit, 'timeUnit': timeUnit, 
+     'veloUnit':veloUnit, 'fuelUnit':fuelUnit, 'maxKEUnit':maxKEUnit,
+     'fuelEnergyUnit':fuelEnergyUnit
+   };
+}
+
+function ok() {
+    return 'ok';
+}
+
+//module.exports = ok;
