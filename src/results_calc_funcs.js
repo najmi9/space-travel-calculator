@@ -12,15 +12,15 @@
 const getResult = (timeCulculator, veloCalculator, fuelCalculator, 
     timeInSpaceshipCalculator, maxKE, fuelEE, beta, gamma) => {
     //----part1
-    const a = parseFloat(document.querySelector("input#acceleration").value);
+    const a = parseFloat(document.querySelector("input#acceleration").value.replaceAll(',',''));
     const AccUnit = document.querySelector("select#acc-units").value;
 
-    const m = parseFloat(document.querySelector("input#mass").value);
+    const m = parseFloat(document.querySelector("input#mass").value.replaceAll(',',''));
     const MassUnit = document.querySelector("select#mass-units").value;
 
     const d = parseFloat(document.querySelector("input#distance").value.replaceAll(',',''));
     const DistUnit = document.querySelector("select#dist-units").value;
-
+ 
     //----part2 ----
     const AccInStandartUnit = a * handleAccUnitChange('m/s²', AccUnit);
     const MassInStandartUnit = m * handleMassUnitChange('kg', MassUnit);
@@ -36,57 +36,46 @@ const getResult = (timeCulculator, veloCalculator, fuelCalculator,
     const FInStandartUnit = fuelCalculator(DistInStandartUnit, AccInStandartUnit, MassInStandartUnit);
     //part 5 -----
     //
-   
     document.querySelector("input#time").value = format(TInStandartUnit * handleTimeUnitChange(timeUnit, 'sec'));
     document.querySelector("input#velocity").value = format(VInStandartUnit * handleVelocityUnitChange(veloUnit, 'm/s'));
-    document.querySelector("input#fuel").value = format(FInStandartUnit * handleDistUnitChange(fuelUnit, 'kg'));
+    document.querySelector("input#fuel").value = format(FInStandartUnit * handleMassUnitChange(fuelUnit, 'kg'));
 
     // Newton model advanced mode
-    if (maxKE && fuelEE) {
+     function handleAvancedMode() {
     // get choosen units;
         const fuelEnergyUnit = document.querySelector("select#fuel-energy-units").value;
         const maxKEUnit = document.querySelector("select#max-kenergy-units").value;
     //caculate enery in standard unit; 
         const fuelEUS = fuelEE(DistInStandartUnit, AccInStandartUnit, MassInStandartUnit);
+
         const MKEStandard  = maxKE(DistInStandartUnit, AccInStandartUnit, MassInStandartUnit);
     //show result with the apropriate units; 
-        document.querySelector("input#MKE").value=format(MKEStandard, handleEnergyUnit(maxKEUnit, 'j'));
-        document.querySelector("input#FEK").value=format(fuelEUS, handleEnergyUnit(fuelEnergyUnit, 'j'));
-    } 
+        document.querySelector("input#MKE").value=format(MKEStandard * handleEnergyUnit(maxKEUnit, 'j'));
+        document.querySelector("input#FEK").value=format(fuelEUS *handleEnergyUnit(fuelEnergyUnit, 'j'));
+    }
+
+    handleAvancedMode();
 
     if (timeInSpaceshipCalculator) {
         const timeInSpaceshipUnit = document.querySelector("select#time-in-spaceship-units").value;
         const TInSpaceshipInStandartUnit = timeInSpaceshipCalculator(DistInStandartUnit, AccInStandartUnit);
         document.querySelector("input#time-in-spaceship").value = format(TInSpaceshipInStandartUnit * handleTimeUnitChange(timeInSpaceshipUnit, 'sec'));
-    // if advanced mode selected
-        if (maxKE && fuelEE && beta && gamma) {
-     // get choosen units;
-        const fuelEnergyUnit = document.querySelector("select#fuel-energy-units").value;
-        const maxKEUnit = document.querySelector("select#max-kenergy-units").value;
-    //caculate enery in standard unit; 
-        const fuelEUS = fuelEE(DistInStandartUnit, AccInStandartUnit, MassInStandartUnit);
-        const MKEStandard  = maxKE(DistInStandartUnit, AccInStandartUnit, MassInStandartUnit);
-    //show result with the apropriate units; 
-        document.querySelector("input#MKE").value=format(MKEStandard, handleEnergyUnit(maxKEUnit, 'j'));
-        document.querySelector("input#FEK").value=format(fuelEUS, handleEnergyUnit(fuelEnergyUnit, 'j'));
+    //  advanced mode with Einstein's model
+        handleAvancedMode();
     // calculate beta and gama factors and show them
         document.querySelector("input#beta").value=format(beta(DistInStandartUnit, AccInStandartUnit));
         document.querySelector("input#gamma").value=format(gamma(DistInStandartUnit, AccInStandartUnit));
-        } 
-   
-    }
-   
+    } 
 }
 
 
-const calculateNewtonStop = (advancedMode) => {
+const calculateNewtonStop = () => {
     const timeCulculator = (d, a) => (2*Math.sqrt(d/a));
     const veloCulculator = (d, a) => (Math.sqrt(a * d));
     const fuelCulculator = (d, a, m) => {
         return ((m * a * d / (2*c * c)) + Math.sqrt(a * d) * m / c);
     };
-      // if advanced mode  exist
-    if(advancedMode){
+      // advanced mode 
         const maxKE =  (d, a, m) =>  {
             const v = veloCulculator(d, a);
             return (m * v * v / 2);
@@ -96,21 +85,15 @@ const calculateNewtonStop = (advancedMode) => {
             return fuel * c * c;
         }
         getResult(timeCulculator, veloCulculator, fuelCulculator, null, maxKE, fuelEE);
-        return;
-    }
-
-    getResult(timeCulculator, veloCulculator, fuelCulculator, null, null, null);
 
 }
 
-const calculateNewtonSpeed = (advancedMode) => {
+const calculateNewtonSpeed = () => {
     const timeCulculator = (d, a) => (Math.sqrt(2 * d / a));
     const veloCulculator = (d, a) => (Math.sqrt(2 * a * d));
   
     const fuelCulculator = (d, a, m) => ((m * a * d / (2*c * c)) + Math.sqrt(a * d) * m / c);
-    // if advanced mode  exist
-    if(advancedMode){
-
+    //  advanced mode  
         const maxKE =  (d, a, m) =>  {
             const v = veloCulculator(d, a);
             return (m * v * v / 2);
@@ -120,15 +103,11 @@ const calculateNewtonSpeed = (advancedMode) => {
             return fuel * c * c;
         }
         getResult(timeCulculator, veloCulculator, fuelCulculator, null, maxKE, fuelEE);
-        return;
-    }
-
-    getResult(timeCulculator, veloCulculator, fuelCulculator, null, null, null);
 
 }
 
 
-const calculateEinsteinSpeed = (advancedMode) => {
+const calculateEinsteinSpeed = () => {
     const timeInEarthCulculator = (d, a) => Math.sqrt((d * d / (c * c) + 2 * d / a));
     const veloCulculator = (d, a) => {
         const t = timeInEarthCulculator(d, a);
@@ -141,7 +120,7 @@ const calculateEinsteinSpeed = (advancedMode) => {
         const T = timeInSpaceshipCalculator(d, a);
         return m * (Math.exp(a * T / c) - 1)
     };
-    if(advancedMode){
+
         const beta = (d, a) =>{
             const v = veloCulculator(d, a);
             return v/c;
@@ -159,13 +138,10 @@ const calculateEinsteinSpeed = (advancedMode) => {
             return fuel * c * c;
         }
         getResult(timeInEarthCulculator, veloCulculator, fuelCulculator, timeInSpaceshipCalculator, maxKE, fuelEE, beta, gamma);
-        return;
-    }
 
-    getResult(timeInEarthCulculator, veloCulculator, fuelCulculator, timeInSpaceshipCalculator);
 }
 
-const catculateEinsteinStop = (advancedMode) => {
+const catculateEinsteinStop = () => {
     const timeInEarthCulculator = (d, a) => Math.sqrt((d * d / (c * c) + 4 * d / a));
     const veloCulculator = (d, a) => {
         const t = timeInEarthCulculator(d, a);
@@ -179,7 +155,6 @@ const catculateEinsteinStop = (advancedMode) => {
         return m * (Math.exp(a * T / c) - 1)
     };
 
-       if(advancedMode){
         const beta = (d, a) =>{
             const v = veloCulculator(d, a);
             return v/c;
@@ -197,9 +172,7 @@ const catculateEinsteinStop = (advancedMode) => {
             return fuel * c * c;
         }
         getResult(timeInEarthCulculator, veloCulculator, fuelCulculator, timeInSpaceshipCalculator, maxKE, fuelEE, beta, gamma);
-        return;
-    }
+        
 
-    getResult(timeInEarthCulculator, veloCulculator, fuelCulculator, timeInSpaceshipCalculator);
 }
 

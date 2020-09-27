@@ -18,12 +18,12 @@
 			<div class="form-row">
 				<div class="col-md-10 col-lg -10 col-sm-10 mb-3">
 					<input type="text" id="acceleration" placeholder="Spaceship Acceleration" class="form-control"
-						value="20000">
+						value="1.5">
 				</div>
 				<div class="col-md-2 col-lg-2  col-sm-2 mb-3">
 					<select id="acc-units" class="custom-select">
-						<option value="m/s²" selected> m/s²</option>
-						<option value="g">g</option>
+						<option value="m/s²"> m/s²</option>
+						<option value="g" selected>g</option>
 						<option value="ft/s²">ft/s²</option>
 					</select>
 				</div>
@@ -31,12 +31,12 @@
 
 			<div class="form-row">
 				<div class="col-md-10 col-lg-10 col-sm-10 mb-3">
-					<input type="text" id="mass" placeholder="Spaceship mass" class="form-control" value="1000">
+					<input type="text" id="mass" placeholder="Spaceship mass" class="form-control" value="10">
 				</div>
 				<div class="col-md-2 col-lg-2 col-sm-2 mb-3">
 					<select id="mass-units" class="custom-select">
 						<option value="kg"> kg</option>
-						<option value="t"> tons </option>
+						<option value="t" selected> tons </option>
 						<option value="Ib"> Ib</option>
 						<option value="stone">stones</option>
 						<option value="USton"> US ton</option>
@@ -60,7 +60,7 @@
 
 			<div class="form-row">
 				<div class="col-md-10 col-lg-10 col-sm-10 mb-3">
-					<input type="text" placeholder="Distance" id="distance" class="form-control" value="5000000">
+					<input type="text" placeholder="Distance" id="distance" class="form-control" value="10">
 				</div>
 				<div class="col-md-2 col-lg-2 col-sm-2 mb-3">
 					<select id="dist-units" class="custom-select">
@@ -69,7 +69,7 @@
 						<option value="ft">ft</option>
 						<option value="yd">yd</option>
 						<option value="mile">mile</option>
-						<option value="ly">ly</option>
+						<option value="ly" selected>ly</option>
 						<option value="au">au</option>
 						<option value="parsec">parsec</option>
 
@@ -114,7 +114,7 @@
 					<option value="dys">dys</option>
 					<option value="week">week</option>
 					<option value="month">month</option>
-					<option value="yrs">yrs</option>
+					<option value="yrs" selected>yrs</option>
 				</select>
 			</div>
 		</div>
@@ -134,7 +134,7 @@
 					<option value="mile/h">mile/h</option>
 					<option value="km/s">km/s</option>
 					<option value="mile/s">mile/s</option>
-					<option value="c">c</option>
+					<option value="c" selected>c</option>
 				</select>
 			</div>
 		</div>
@@ -151,7 +151,7 @@
 			<div class="col-md-2 col-lg-2 col-sm-2 mt-4">
 				<select id="fuel-units" class="custom-select">
 					<option value="kg"> Kg</option>
-					<option value="t"> tons </option>
+					<option value="t" selected> tons </option>
 					<option value="Ib"> Ib</option>
 					<option value="stone">stones</option>
 					<option value="USton"> US ton</option>
@@ -175,7 +175,7 @@
 					<option value="12j">10¹² J</option>
 					<option value="15j">10¹⁵ J</option>
 					<option value="18j">10¹⁸ J</option>
-					<option value="21j">10²¹ J</option>
+					<option value="21j" selected>10²¹ J</option>
 					<option value="24j">10²⁴ J</option>
 
 				</select>
@@ -192,7 +192,7 @@
 				<select class="custom-select" id="max-kenergy-units">
 					<option value="j">J</option>
 					<option value="kj">KJ</option>
-					<option value="mj">MJ</option>
+					<option value="mj" selected>MJ</option>
 					<option value="wh">Wh</option>
 					<option value="kwh">KWh</option>
 					<option value="mwh">MWh</option>
@@ -239,7 +239,7 @@
 	<script type="text/javascript" src="src/handle_unit_change.js"></script>
 	<script type="text/javascript" src="src/on_aim_change.js"></script>
 	<script type="text/javascript" src="src/on_universe_model_change.js"></script>
-	<script type="text/javascript" src="src/advanced-mode/app.js"></script>
+	<script type="text/javascript" src="src/handle_advanced_mode_view.js"></script>
 </body>
 
 </html>

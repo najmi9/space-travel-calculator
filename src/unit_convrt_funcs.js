@@ -5,7 +5,6 @@ let handleAccUnitChange = (newUnit, previousUnit) => {
 		return 1;
 	}
 	const ms = { 'm/s²': 1, 'g': 9.807, 'ft/s²': 0.3048 };
-
 	return ms[previousUnit] / ms[newUnit];
 }
 
@@ -21,6 +20,8 @@ const handleMassUnitChange = (newUnit, previousUnit) => {
 	return  kg[previousUnit] / kg[newUnit];
 };
 const handleDistUnitChange = (newUnit, previousUnit) => {
+	console.log(newUnit, previousUnit);
+	
 	if (previousUnit == newUnit) {
 		return 1;
 	}
@@ -52,7 +53,6 @@ const handleVelocityUnitChange = (newUnit, previousUnit) => {
 	if (previousUnit == newUnit) {
 		return 1;
 	}
-
 	const ms = {
 		'm/s': 1, 'km/h': 1000 / 3600, 'ft/s': 0.3048, 'mile/h': 1609.3 / 3600
 		, 'c': c, 'km/s': 1000, 'mile/s': 1609.3
@@ -73,6 +73,5 @@ const handleEnergyUnit = (newUnit, previousUnit) =>{
   	'18j':p(18), '21j':p(21), '24j':p(24), 'kj':p(3), 'wh':3600 ,
   	'kwh':3600*p(3) , 'mwh' :3600*p(6)
   }
-				
   return j[previousUnit] / j[newUnit];
 }

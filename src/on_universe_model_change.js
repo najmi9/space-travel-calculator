@@ -11,7 +11,7 @@ function listenChange() {
 
 document.querySelector("select#model").onchange = ({ currentTarget }) => {
   const advancedMode =  document.querySelector("input#mode").checked;
-  //exist in /avanced-mode/app.js
+  //exist in handle_advanced_mode_view.js
   handleAdvancedView(advancedMode, currentTarget.value);
   
   //exist in handle_view_change.js
@@ -20,22 +20,22 @@ document.querySelector("select#model").onchange = ({ currentTarget }) => {
 
   if (currentTarget.value == "newton" && aim == 'stop') {
     // results_calc_funcs.js
-    calculateNewtonStop(advancedMode)
+    calculateNewtonStop()
 
   } else if (currentTarget.value == "newton" && aim == "full-speed") {
     // results_calc_funcs.js
-    calculateNewtonSpeed(advancedMode);
+    calculateNewtonSpeed();
 
   } else if (currentTarget.value == "einstein" && aim == "full-speed") {
     // on top
     listenChange();
     // results_calc_funcs.js
-    calculateEinsteinSpeed(advancedMode);
+    calculateEinsteinSpeed();
   } else if (currentTarget.value == "einstein" && aim == "stop") {
      // on top
     listenChange()
     // results_calc_funcs.js
-    catculateEinsteinStop(advancedMode);
+    catculateEinsteinStop();
   }
 
 

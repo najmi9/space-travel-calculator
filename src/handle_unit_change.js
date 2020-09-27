@@ -14,9 +14,10 @@ const handleChange = (input, newUnit, previousUnit, handleUnit) => {
   if (newUnit == previousUnit) {
     return;
   }
+
   const factor = handleUnit(newUnit, previousUnit);
-  console.log(factor, parseFloat(input.value.replaceAll(',', '')))
   input.value = parseFloat(input.value.replaceAll(',', '')) * factor;
+  
 }
 
 document.querySelector("select#acc-units").onchange = ({ currentTarget }) => {

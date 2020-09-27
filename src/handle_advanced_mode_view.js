@@ -21,5 +21,6 @@ function handleAdvancedView(checked, selectedMode) {
 }
 
 document.querySelector("input#mode").onchange = ({currentTarget}) =>{
+	
    handleAdvancedView(currentTarget.checked, model.value);
 }
