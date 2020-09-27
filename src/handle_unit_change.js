@@ -15,8 +15,8 @@ const handleChange = (input, newUnit, previousUnit, handleUnit) => {
     return;
   }
   const factor = handleUnit(newUnit, previousUnit);
-  console.log(factor, parseFloat(input.value))
-  input.value = parseFloat(input.value) * factor;
+  console.log(factor, parseFloat(input.value.replaceAll(',', '')))
+  input.value = parseFloat(input.value.replaceAll(',', '')) * factor;
 }
 
 document.querySelector("select#acc-units").onchange = ({ currentTarget }) => {
@@ -39,7 +39,6 @@ document.querySelector("select#dist-units").onchange = ({ currentTarget }) => {
 }
 
 document.querySelector("select#time-units").onchange = ({ currentTarget }) => {
-  console.log("change")
   const time = document.querySelector("input#time");
   handleChange(time, currentTarget.value, previousTimeUnit, handleTimeUnitChange);
   previousTimeUnit = currentTarget.value;
@@ -60,14 +59,13 @@ document.querySelector("select#fuel-units").onchange = ({ currentTarget }) => {
 
 document.querySelector("select#fuel-energy-units").onchange = ({ currentTarget }) => {
   const fuel = document.querySelector("input#FEK");
-  handleChange(fuel, currentTarget.value, previousFuelEUnit, handleEneryUnit);
+  handleChange(fuel, currentTarget.value, previousFuelEUnit, handleEnergyUnit);
   previousFuelEUnit = currentTarget.value;
 }
 
 
 document.querySelector("select#max-kenergy-units").onchange = ({ currentTarget }) => {
   const me = document.querySelector("input#MKE");
-  handleChange(me, currentTarget.value, previousMaxKEUnit, handleEneryUnit);
-  previousMaxKEUnit = currentTarget.value;
+  handleChange(me, currentTarget.value, previousMaxKEUnit, handleEnergyUnit);
 }
 
