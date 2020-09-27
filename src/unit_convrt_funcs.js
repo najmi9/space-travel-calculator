@@ -1,40 +1,28 @@
  const format = number => new Intl.NumberFormat().format(number)
    
 let handleAccUnitChange = (newUnit, previousUnit) => {
-	let factor = 1;
 	if (newUnit == previousUnit) {
-		return factor;
+		return 1;
 	}
 	const ms = { 'm/s²': 1, 'g': 9.807, 'ft/s²': 0.3048 };
-	if (newUnit == 'm/s²') {
-		factor = ms[previousUnit];
-	} else {
-		factor = ms[previousUnit] / ms[newUnit];
-	}
-	return factor;
+
+	return ms[previousUnit] / ms[newUnit];
 }
 
 const handleMassUnitChange = (newUnit, previousUnit) => {
-	let factor = 1;
 	if (newUnit == previousUnit) {
-		return factor;
+		return 1;
 	}
 	const kg = {
 		'kg': 1, 't': 1000, 'Ib': 1 / 2.046, 'stone': 6.35,
 		'USton': 907.2, 'LongTon': 1016
 	};
 
-	if (newUnit == "kg") {
-		factor = kg[previousUnit];
-	} else {
-		factor = kg[previousUnit] / kg[newUnit];
-	}
-	return factor;
+	return  kg[previousUnit] / kg[newUnit];
 };
 const handleDistUnitChange = (newUnit, previousUnit) => {
-	let factor = 1;
 	if (previousUnit == newUnit) {
-		return factor;
+		return 1;
 	}
 	const asUn = 149597870700;
 	const psUn = 30857000000000000;
@@ -44,37 +32,25 @@ const handleDistUnitChange = (newUnit, previousUnit) => {
 		'au': asUn, 'parsec': psUn, 'ly': lyear
 	};
 
-	if (newUnit == "m") {
-		factor = m[previousUnit];
-	} else {
-		factor = m[previousUnit] / m[newUnit];
-	}
-	return factor;
+	return m[previousUnit] / m[newUnit];
 };
 
 const handleTimeUnitChange = (newUnit, previousUnit) => {
-	let factor = 1;
 	if (previousUnit == newUnit) {
-		return factor;
+		return 1;
 	}
 	const sec = {
 		'sec': 1, 'min': 60, 'hrs': 3600,
 		'dys': 3600 * 24, 'week': 3600 * 7 * 24, 'month': 3600 * 24 * 30,
 		'yrs': 3600 * 24 * 365
 	}
-
-	if (newUnit == "sec") {
-		factor = sec[previousUnit];
-	} else {
-		factor = sec[previousUnit] / sec[newUnit];
-	}
-	return factor;
+	return sec[previousUnit] / sec[newUnit];
 };
 
 const handleVelocityUnitChange = (newUnit, previousUnit) => {
-	let factor = 1;
+	
 	if (previousUnit == newUnit) {
-		return factor;
+		return 1;
 	}
 
 	const ms = {
@@ -82,14 +58,21 @@ const handleVelocityUnitChange = (newUnit, previousUnit) => {
 		, 'c': c, 'km/s': 1000, 'mile/s': 1609.3
 	}
 
-	if (newUnit == "m/s") {
-		factor = ms[previousUnit];
-	} else {
-		factor = ms[previousUnit] / ms[newUnit];
-	}
-
-	return factor;
+	return ms[previousUnit] / ms[newUnit];
 };
 
 
-const handleEnergyUnit = (newUnit, previousUnit) =>1
+const handleEnergyUnit = (newUnit, previousUnit) =>{
+  if (newUnit == previousUnit){
+  	  return 1;
+  }
+  const p = n => Math.pow(10, n);
+
+  const j = {
+  	'j':1, 'mj':p(6), 'ft-ibs':1.355818, '12j':p(12), '15j':p(15),
+  	'18j':p(18), '21j':p(21), '24j':p(24), 'kj':p(3), 'wh':3600 ,
+  	'kwh':3600*p(3) , 'mwh' :3600*p(6)
+  }
+				
+  return j[previousUnit] / j[newUnit];
+}

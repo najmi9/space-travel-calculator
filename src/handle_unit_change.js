@@ -3,7 +3,9 @@ let previousMassUnit = document.querySelector("select#mass-units").value
 let previousDistUnit = document.querySelector("select#dist-units").value
 let previousTimeUnit = document.querySelector("select#time-units").value
 let previousVeloUnit = document.querySelector("select#velocity-units").value
-let previousFuelUnit = document.querySelector("select#fuel-units").value
+let previousFuelUnit = document.querySelector("select#fuel-units").value;
+let previousMaxKEUnit = document.querySelector("select#max-kenergy-units").value;
+let previousFuelEUnit = document.querySelector("select#fuel-energy-units").value;
 
 const handleChange = (input, newUnit, previousUnit, handleUnit) => {
   if (input.value == '') {
@@ -55,4 +57,17 @@ document.querySelector("select#fuel-units").onchange = ({ currentTarget }) => {
   previousFuelUnit = currentTarget.value;
 }
 
+
+document.querySelector("select#fuel-energy-units").onchange = ({ currentTarget }) => {
+  const fuel = document.querySelector("input#FEK");
+  handleChange(fuel, currentTarget.value, previousFuelEUnit, handleEneryUnit);
+  previousFuelEUnit = currentTarget.value;
+}
+
+
+document.querySelector("select#max-kenergy-units").onchange = ({ currentTarget }) => {
+  const me = document.querySelector("input#MKE");
+  handleChange(me, currentTarget.value, previousMaxKEUnit, handleEneryUnit);
+  previousMaxKEUnit = currentTarget.value;
+}
 
