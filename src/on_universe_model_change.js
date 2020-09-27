@@ -10,28 +10,32 @@ function listenChange() {
 }
 
 document.querySelector("select#model").onchange = ({ currentTarget }) => {
+  const advancedMode =  document.querySelector("input#mode").checked;
+  //exist in /avanced-mode/app.js
+  handleAdvancedView(advancedMode, currentTarget.value);
+  
   //exist in handle_view_change.js
   changeResultView(currentTarget);
   const aim = document.querySelector("select#aim").value;
 
   if (currentTarget.value == "newton" && aim == 'stop') {
     // results_calc_funcs.js
-    calculateNewtonStop()
+    calculateNewtonStop(advancedMode)
 
   } else if (currentTarget.value == "newton" && aim == "full-speed") {
     // results_calc_funcs.js
-    calculateNewtonSpeed();
+    calculateNewtonSpeed(advancedMode);
 
   } else if (currentTarget.value == "einstein" && aim == "full-speed") {
     // on top
     listenChange();
     // results_calc_funcs.js
-    calculateEinsteinSpeed();
+    calculateEinsteinSpeed(advancedMode);
   } else if (currentTarget.value == "einstein" && aim == "stop") {
      // on top
     listenChange()
     // results_calc_funcs.js
-    catculateEinsteinStop();
+    catculateEinsteinStop(advancedMode);
   }
 
 

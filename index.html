@@ -158,7 +158,77 @@
 					<option value="LongTon"> imperial tons </option>
 				</select>
 			</div>
+		</div>
+         <div class="advanced-mode">
+		<div class="form-row  my-3">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				Fuel energy equivalent :
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<input type="" class="form-control" id="FEK" placeholder="Fuel energy equivalent" readonly>
+			</div>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				<select class="custom-select" id="fuel-energy-units">
+					<option value="j">J</option>
+					<option value="mj">MJ</option>
+					<option value="ft-ibs">ft-Ibs</option>
+					<option value="12j">10¹² J</option>
+					<option value="15j">10¹⁵ J</option>
+					<option value="18j">10¹⁸ J</option>
+					<option value="21j">10²¹ J</option>
+					<option value="24j">10²⁴ J</option>
 
+				</select>
+			</div>
+		</div>
+		<div class="form-row  mb-3">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				Maximum kenetic energy
+			</div>
+			<div class="col-xs-6  col-sm-6 col-md-6 col-lg-6">
+				<input type="" class="form-control" id="MKE" placeholder="Maximum kenetic energy" readonly>
+			</div>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				<select class="custom-select" id="max-kenergy-units">
+					<option value="j">J</option>
+					<option value="kj">KJ</option>
+					<option value="mj">MJ</option>
+					<option value="wh">Wh</option>
+					<option value="kwh">KWh</option>
+					<option value="mwh">MWh</option>
+					<option value="ft-ibs">ft-Ibs</option>
+					
+				</select>
+			</div>
+		</div>
+	</div>
+	<div id="advanced-einstein-mode">
+		<div class="form-row  mb-3">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				β [v/c]
+			</div>
+			<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+				<input type="" class="form-control" id="beta" 
+				placeholder="β [v/c]" readonly>
+			</div>
+		</div>
+
+		<div class="form-row  mb-3">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				γ [1/√(1 - β²)]
+			</div>
+			<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+				<input type="" class="form-control" id="gamma" 
+				placeholder="γ [1/√(1 - β²)]" readonly>
+			</div>
+		</div>
+	</div>
+		<div>
+
+          <label>
+          	<input type="checkbox" name="mode" id="mode">
+          	Advanced mode
+          </label>
 		</div>
 	</div>
 
@@ -169,6 +239,7 @@
 	<script type="text/javascript" src="src/handle_unit_change.js"></script>
 	<script type="text/javascript" src="src/on_aim_change.js"></script>
 	<script type="text/javascript" src="src/on_universe_model_change.js"></script>
+	<script type="text/javascript" src="src/advanced-mode/app.js"></script>
 </body>
 
 </html>

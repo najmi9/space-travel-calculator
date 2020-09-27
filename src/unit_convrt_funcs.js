@@ -90,3 +90,6 @@ const handleVelocityUnitChange = (newUnit, previousUnit) => {
 
 	return factor;
 };
+
+
+const handleEnergyUnit = (newUnit, previousUnit) =>1
