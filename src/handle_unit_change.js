@@ -15,15 +15,9 @@ const handleChange = (input, newUnit, previousUnit, handleUnit) => {
     return;
   }
 
-  const factor = handleUnit(newUnit, previousUnit);
-  
-  if (parseFloat(input.value.replaceAll(',', '')) * factor <0.001) {
-    input.value = format1(parseFloat(input.value.replaceAll(',', '')) * factor);
-  } else {
-    input.value = format(parseFloat(input.value.replaceAll(',', '')) * factor);
-  }
-
-  
+    const factor = handleUnit(newUnit, previousUnit);
+    const filtredValue = parseFloat(input.value.replaceAll(',', ''));
+    input.value = format(filtredValue * factor);
 }
 
 document.querySelector("select#acc-units").onchange = ({ currentTarget }) => {

@@ -1,9 +1,11 @@
-const format = number => new Intl.NumberFormat().format(number)
+const format = number =>{
+	if (number<0.001) {
+		 return number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+	} else {
+		return new Intl.NumberFormat().format(number);
+	}
+}
    
-function format1(num) {
-  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-} 
-
 let handleAccUnitChange = (newUnit, previousUnit) => {
 	if (newUnit == previousUnit) {
 		return 1;
@@ -17,7 +19,7 @@ const handleMassUnitChange = (newUnit, previousUnit) => {
 		return 1;
 	}
 	const kg = {
-		'kg': 1, 't': 1000, 'Ib': 1 / 2.046, 'stone': 6.35,
+		'kg': 1, 't': 1000, 'Ib': 1 / 2.2046, 'stone': 6.35,
 		'USton': 907.2, 'LongTon': 1016
 	};
 
@@ -55,6 +57,8 @@ const handleVelocityUnitChange = (newUnit, previousUnit) => {
 	if (previousUnit == newUnit) {
 		return 1;
 	}
+
+	const c = 300000000;
 	const ms = {
 		'm/s': 1, 'km/h': 1000 / 3600, 'ft/s': 0.3048, 'mile/h': 1609.3 / 3600
 		, 'c': c, 'km/s': 1000, 'mile/s': 1609.3
@@ -77,12 +81,3 @@ const handleEnergyUnit = (newUnit, previousUnit) =>{
   }
   return j[previousUnit] / j[newUnit];
 }
-/*
-module.exports = {
-	handleEnergyUnit,
-	handleVelocityUnitChange,
-	handleTimeUnitChange,
-	handleDistUnitChange,
-	handleMassUnitChange,
-	handleAccUnitChange,
-}*/

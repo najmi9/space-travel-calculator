@@ -53,23 +53,22 @@ const {a, m, d, AccUnit, MassUnit, DistUnit, timeUnit, veloUnit,
     } 
 }
 
-const calculateNewtonStop = () => {
-
-    const timeCulculator = (d, a) => (2*Math.sqrt(d/a));
-    const veloCulculator = (d, a) => (Math.sqrt(a * d));
-    const fuelCulculator = (d, a, m) => {
+const calculateNewtonStop = (d, a, m) => {
+    const timeCalculator = (d, a) => (2*Math.sqrt(d/a));
+    const veloCalculator = (d, a) => (Math.sqrt(a * d));
+    const fuelCalculator = (d, a, m) => {
         return ((m * a * d / (2*c * c)) + Math.sqrt(a * d) * m / c);
     };
       // advanced mode 
     const maxKE =  (d, a, m) =>  {
-        const v = veloCulculator(d, a);
+        const v = veloCalculator(d, a);
         return (m * v * v / 2);
     };
     const fuelEE = (d, a, m) =>{
-        const fuel = fuelCulculator(d, a, m);
+        const fuel = fuelCalculator(d, a, m);
         return fuel * c * c;
     }
-    getResult(timeCulculator, veloCulculator, fuelCulculator, null, maxKE, fuelEE);
+     getResult(timeCalculator, veloCalculator, fuelCalculator, null, maxKE, fuelEE);
 }
 
 const calculateNewtonSpeed = () => {
@@ -85,7 +84,7 @@ const calculateNewtonSpeed = () => {
         const fuel = fuelCulculator(d, a, m);
         return fuel * c * c;
     }
-    getResult(timeCulculator, veloCulculator, fuelCulculator, null, maxKE, fuelEE);
+   getResult(timeCulculator, veloCulculator, fuelCulculator, null, maxKE, fuelEE);
 
 }
 
@@ -120,7 +119,7 @@ const calculateEinsteinSpeed = () => {
         const fuel = fuelCulculator(d, a, m);
         return fuel * c * c;
     }
-    getResult(timeInEarthCulculator, veloCulculator, fuelCulculator, timeInSpaceshipCalculator, maxKE, fuelEE, beta, gamma);
+   getResult(timeInEarthCulculator, veloCulculator, fuelCulculator, timeInSpaceshipCalculator, maxKE, fuelEE, beta, gamma);
 
 }
 
@@ -153,6 +152,9 @@ const catculateEinsteinStop = () => {
         const fuel = fuelCulculator(d, a, m);
         return fuel * c * c;
     }
-    getResult(timeInEarthCulculator, veloCulculator, fuelCulculator, timeInSpaceshipCalculator, maxKE, fuelEE, beta, gamma);
+   getResult(timeInEarthCulculator, veloCulculator, fuelCulculator, timeInSpaceshipCalculator, maxKE, fuelEE, beta, gamma);
 }
 
+/*module.exports = {
+    calculateNewtonStop
+}*/

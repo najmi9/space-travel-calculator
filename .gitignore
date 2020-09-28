@@ -1,6 +1,6 @@
 node_modules
 rubish.md
-test
+test/calculators.test.js
 yarn.lock
-package.json
-
+#package.json
+yarn-error.log

@@ -1,4 +1,4 @@
-const c = 300000000;
+const c = 299792458;
 const starsGlaxies = [
     { 'star': 'Alpha Centauri', 'distance': 41343259000000000 },
     { 'star': 'Sirius', 'distance': 81362020000000000 },
@@ -71,8 +71,3 @@ function getDataAndUnits() {
    };
 }
 
-function ok() {
-    return 'ok';
-}
-
-//module.exports = ok;
