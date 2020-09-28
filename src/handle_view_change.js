@@ -3,8 +3,9 @@ const handleTargetChange = (value) => {
 	const inputDist = document.querySelector("input#distance");
 	const distUnit = document.querySelector("select#dist-units").value;
 	const factor = handleDistUnitChange(distUnit, 'm');
-	inputDist.value = format(factor * parseInt(value));
+    inputDist.value =format(factor * parseInt(value));
 }
+
 const dest = document.getElementById('destination');
 const element = document.getElementById('stars-or-exoplanets');
 
@@ -17,7 +18,7 @@ dest.onchange = ({ currentTarget }) => {
 
 	const selectStar = document.querySelector("select#stars");
 	const selectExo = document.querySelector("select#exoplanets");
-	const selectPlnt = document.querySelector("select#planets");
+	const selectPlnt = document.querySelector("select#planets"); 
 
 	if (currentTarget.value == "Exoplanet") {
 		if (selectExo) {
@@ -34,8 +35,8 @@ dest.onchange = ({ currentTarget }) => {
 		select.onchange = ({ currentTarget }) => {
 			handleTargetChange(currentTarget.value);
 			const selectedModel = document.querySelector("select#model").value;
-			const selectedAim = document.querySelector("select#aim").value;
-			calculResult(selectedAim, selectedModel);
+            const selectedAim = document.querySelector("select#aim").value;
+            manageResultAndView(selectedAim, selectedModel, getDataAndUnits);
 		}
 	} else if (currentTarget.value == "Star Or Galaxy") {
 		if (selectStar) {
@@ -52,10 +53,10 @@ dest.onchange = ({ currentTarget }) => {
 		select.onchange = ({ currentTarget }) => {
 			handleTargetChange(currentTarget.value);
 			const selectedModel = document.querySelector("select#model").value;
-			const selectedAim = document.querySelector("select#aim").value;
-			calculResult(selectedAim, selectedModel);
+            const selectedAim = document.querySelector("select#aim").value;
+            manageResultAndView(selectedAim, selectedModel, getDataAndUnits);
 		}
-	} else if (currentTarget.value == "Planet Or Dwarf") {
+	}else if (currentTarget.value == "Planet Or Dwarf") {
 		if (selectPlnt) {
 			return;
 		}
@@ -70,8 +71,8 @@ dest.onchange = ({ currentTarget }) => {
 		select.onchange = ({ currentTarget }) => {
 			handleTargetChange(currentTarget.value);
 			const selectedModel = document.querySelector("select#model").value;
-			const selectedAim = document.querySelector("select#aim").value;
-			calculResult(selectedAim, selectedModel);
+            const selectedAim = document.querySelector("select#aim").value;
+            manageResultAndView(selectedAim, selectedModel, getDataAndUnits);
 		}
 	}
 	element.setAttribute("class", "form-group");
@@ -107,5 +108,16 @@ const changeResultView = (currentTarget) => {
 			div.children[1].firstElementChild.setAttribute("placeholder", "Time passed ")
 		}
 	}
+}
+
+// listen if there is any change in time units if user chose Einstein's Model
+function listenChange() {
+    const unitTimeDiv = document.querySelector("select#time-in-spaceship-units");
+    let previousTimeInSpaceUnit = unitTimeDiv.value
+    document.querySelector("select#time-in-spaceship-units").onchange = ({ currentTarget }) => {
+    const time = document.querySelector("input#time-in-spaceship");
+    handleChange(time, currentTarget.value, previousTimeInSpaceUnit, handleTimeUnitChange);
+    previousTimeInSpaceUnit = currentTarget.value;
+  }
 }
 

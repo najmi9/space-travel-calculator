@@ -14,10 +14,14 @@ const handleChange = (input, newUnit, previousUnit, handleUnit) => {
   if (newUnit == previousUnit) {
     return;
   }
+
   const factor = handleUnit(newUnit, previousUnit);
-  const filtredValue = parseFloat(input.value.replaceAll(',', ''));
-  input.value = format(filtredValue * factor);
+  
+      input.value = format(parseFloat(input.value.replaceAll(',', '')) * factor);
+
+    
 }
+
 document.querySelector("select#acc-units").onchange = ({ currentTarget }) => {
   const acc = document.querySelector("input#acceleration");
   // handleAccUnitChange : function exist in unit_convert_functs.js

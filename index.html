@@ -1,286 +1,290 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<title>Space Travel Calculator</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<head>
+	<title>Space Travel Calculator</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<link rel="stylesheet" type="text/css" href="style.css">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-	</head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
 
-	<body>
-		<div class="main container mt-2">
-			<h1 class="bg-light border-top">
-				Prepare for travel :
-			</h1>
-			<form>
-				<div class="form-row my-3">
-					<div class="col-4 col-sm-4 col-md-4 col-lg-4">
-						Acceleration :
-					</div>
-					<div class="col-6 col-sm-6 col-md-6 col-lg-6">
-						<input type="text" id="acceleration" placeholder="Spaceship Acceleration" class="form-control" value="1.5">
-					</div>
-
-					<div class="col-2 col-sm-2 col-md-2 col-lg-2">
-						<select id="acc-units" class="custom-select">
-							<option value="m/s²">
-								m/s²</option>
-							<option value="g" selected>g</option>
-							<option value="ft/s²">ft/s²</option>
-						</select>
-					</div>
-				</div>
-
-				<div class="form-row mb-3">
-					<div class="col-4 col-sm-4 col-md-4 col-lg-4" data-title="Mass of Spaceship excluding fuel">
-						Spaceship mass :
-					</div>
-					<div class="col-6 col-sm-6 col-md-6 col-lg-6">
-						<input type="text" id="mass" placeholder="Spaceship mass" class="form-control" value="10">
-					</div>
-					<div class="col-md-2 col-lg-2 col-sm-2 col-2">
-						<select id="mass-units" class="custom-select">
-							<option value="kg">
-								kg</option>
-							<option value="t" selected>
-								tons
-							</option>
-							<option value="Ib">
-								Ib</option>
-							<option value="stone">stones</option>
-							<option value="USton">
-								US ton</option>
-							<option value="LongTon">
-								imperial tons
-							</option>
-						</select>
-					</div>
-				</div>
-
-				<div class="form-row mb-3">
-					<div class="col-4 col-sm-4 col-md-4 col-lg-4" data-title="Select a destination or type in distance by hand">
-						Destination :
-					</div>
-					<div class="col-4 col-sm-4 col-md-4 col-lg-4">
-						<select id="destination" class="custom-select">
-							<option value="">Destination</option>
-							<option value="Star Or Galaxy">Star or Galaxy</option>
-							<option value="Exoplanet">Exoplanet</option>
-							<option value="Planet Or Dwarf">
-								Planet or Dwarf</option>
-						</select>
-					</div>
-
-					<div id="stars-or-exoplanets" class="col-4 col-sm-4 col-md-4 col-lg-4"></div>
-				</div>
-
-				<div class="form-row mb-3">
-					<div class="col-4 col-sm-4 col-md-4 col-lg-4">
-						Distance :
-					</div>
-					<div class="col-6 col-sm-6 col-md-6 col-lg-6">
-						<input type="text" placeholder="Distance" id="distance" class="form-control" value="10">
-					</div>
-					<div class="col-md-2 col-lg-2 col-sm-2 col-2">
-						<select id="dist-units" class="custom-select">
-							<option value="m" selected>m</option>
-							<option value="km">km</option>
-							<option value="ft">ft</option>
-							<option value="yd">yd</option>
-							<option value="mile">mile</option>
-							<option value="ly" selected>ly</option>
-							<option value="au">au</option>
-							<option value="parsec">parsec</option>
-
-						</select>
-					</div>
-				</div>
-
-				<div class="form-row mb-3">
-					<div class="col-4 col-sm-4 col-md-4 col-lg-4" data-title="Do tou want to stop at destination point? ">
-						Aim
-					</div>
-					<div class="col-8 col-sm-8 col-md-8 col-lg-8">
-						<select id="aim" class="custom-select">
-							<option value="">Aim</option>
-							<option value="stop">Arrive at destination and stop</option>
-							<option value="full-speed">Arrive at destination at full speed</option>
-						</select>
-					</div>
-				</div>
-
-				<div class="form-row mb-3">
-					<div class="col-4 col-sm-4 col-md-4 col-lg-4" data-title="Einstein's special relativity or Newton's physics">
-						Calculation Mode
-					</div>
-					<div class="col-8 col-sm-8 col-md-8 col-lg-8">
-						<select id="model" class="custom-select">
-							<option value="">Universe Model</option>
-							<option value="einstein">Einstein's universe</option>
-							<option value="newton">
-								Newton's universe
-							</option>
-						</select>
-					</div>
-				</div>
-
-			</form>
-
-			<h1 class="bg-light border-top">
-				Journey :
-			</h1>
-			<div class="form-row js-time mb-3">
-
-				<div class="col-4 col-sm-4 col-md-4 col-lg-4">
-					Time passed :
-				</div>
-
+<body>
+	<div class="main container mt-2">
+		<h1 class="bg-light border-top"> Prepare for travel : </h1>
+		<form>
+			<div class="form-row my-3">
+                <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                	Acceleration :
+                </div>
 				<div class="col-6 col-sm-6 col-md-6 col-lg-6">
-					<input type="text" class="form-control" placeholder="Time passed" id="time" readonly>
+					<input type="text" id="acceleration" placeholder="Spaceship Acceleration" class="form-control"
+						value="1.5">
 				</div>
 
-				<div class="col-md-2 col-lg-2 col-sm-2">
-					<select class="custom-select" id="time-units">
-						<option value="sec">sec</option>
-						<option value="min">min</option>
-						<option value="hrs">hrs</option>
-						<option value="dys">dys</option>
-						<option value="week">week</option>
-						<option value="month">month</option>
-						<option value="yrs" selected>yrs</option>
+				<div class="col-2 col-sm-2 col-md-2 col-lg-2">
+					<select id="acc-units" class="custom-select">
+						<option value="m/s²"> m/s²</option>
+						<option value="g" selected>g</option>
+						<option value="ft/s²">ft/s²</option>
 					</select>
 				</div>
 			</div>
 
 			<div class="form-row mb-3">
-				<div class="col-4 col-sm-4 col-md-4 col-lg-4">
-
-					Maximum velocity :
+				<div class="col-4 col-sm-4 col-md-4 col-lg-4"
+                  data-title="Mass of Spaceship excluding fuel"
+				>
+					Spaceship mass : 
 				</div>
 				<div class="col-6 col-sm-6 col-md-6 col-lg-6">
-					<input type="text" class="form-control" placeholder="Maximum Vellocity" id="velocity" readonly>
+					<input type="text" id="mass" placeholder="Spaceship mass" class="form-control" value="10">
 				</div>
-				<div class="col-md-2 col-lg-2 col-sm-2 ">
-					<select class="custom-select" id="velocity-units">
-						<option value="m/s">m/s</option>
-						<option value="km/h">km/h</option>
-						<option value="ft/s">ft/s</option>
-						<option value="mile/h">mile/h</option>
-						<option value="km/s">km/s</option>
-						<option value="mile/s">mile/s</option>
-						<option value="c" selected>c</option>
-					</select>
-				</div>
-			</div>
-
-			<div class="form-row mb-3">
-				<div class="col-4 col-sm-4 col-md-4 col-lg-4" data-title="assuming 100% efficiency">
-
-					Required fuel mass :
-				</div>
-				<div class="col-6 col-sm-6 col-md-6 col-lg-6">
-					<input type="text" class="form-control" placeholder="Required fuel mass" id="fuel" readonly>
-				</div>
-
 				<div class="col-md-2 col-lg-2 col-sm-2 col-2">
-					<select id="fuel-units" class="custom-select">
-						<option value="kg">
-							Kg</option>
-						<option value="t" selected>
-							tons
-						</option>
-						<option value="Ib">
-							Ib</option>
+					<select id="mass-units" class="custom-select">
+						<option value="kg"> kg</option>
+						<option value="t" selected> tons </option>
+						<option value="Ib"> Ib</option>
 						<option value="stone">stones</option>
-						<option value="USton">
-							US ton</option>
-						<option value="LongTon">
-							imperial tons
-						</option>
+						<option value="USton"> US ton</option>
+						<option value="LongTon"> imperial tons </option>
 					</select>
 				</div>
 			</div>
-			<div class="advanced-mode">
-				<div class="form-row  my-3">
-					<div class="col-4 col-sm-4 col-md-4 col-lg-4" data-title="Required fuel mass multiplied by c²">
-						Fuel energy equivalent :
-					</div>
-					<div class="col-6 col-sm-6 col-md-6 col-lg-6">
-						<input type="" class="form-control" id="FEK" placeholder="Fuel energy equivalent" readonly>
-					</div>
-					<div class="col-2 col-sm-2 col-md-2 col-lg-2">
-						<select class="custom-select" id="fuel-energy-units">
-							<option value="j">J</option>
-							<option value="mj">MJ</option>
-							<option value="ft-ibs">ft-Ibs</option>
-							<option value="12j">10¹² J</option>
-							<option value="15j">10¹⁵ J</option>
-							<option value="18j">10¹⁸ J</option>
-							<option value="21j" selected>10²¹ J</option>
-							<option value="24j">10²⁴ J</option>
 
-						</select>
-					</div>
+			<div class="form-row mb-3">
+				<div class="col-4 col-sm-4 col-md-4 col-lg-4"
+                 data-title="Select a destination or type in distance by hand" 
+				>
+					Destination : 
 				</div>
-				<div class="form-row  mb-3">
-					<div class="col-4 col-sm-4 col-md-4 col-lg-4">
-						Maximum kenetic energy
-					</div>
-					<div class="col-6  col-sm-6 col-md-6 col-lg-6">
-						<input type="" class="form-control" id="MKE" placeholder="Maximum kenetic energy" readonly>
-					</div>
-					<div class="col-2 col-sm-2 col-md-2 col-lg-2">
-						<select class="custom-select" id="max-kenergy-units">
-							<option value="j">J</option>
-							<option value="kj">KJ</option>
-							<option value="mj" selected>MJ</option>
-							<option value="wh">Wh</option>
-							<option value="kwh">KWh</option>
-							<option value="mwh">MWh</option>
-							<option value="ft-ibs">ft-Ibs</option>
+				<div class="col-4 col-sm-4 col-md-4 col-lg-4">
+					<select id="destination" class="custom-select">
+						<option value="">Destination</option>
+						<option value="Star Or Galaxy">Star or Galaxy</option>
+						<option value="Exoplanet">Exoplanet</option>
+						<option value="Planet Or Dwarf"> Planet or Dwarf</option>
+					</select>
+				</div>
 
-						</select>
-					</div>
+				<div id="stars-or-exoplanets" class="col-4 col-sm-4 col-md-4 col-lg-4">
+
 				</div>
 			</div>
-			<div id="advanced-einstein-mode">
-				<div class="form-row  mb-3">
-					<div class="col-4 col-sm-4 col-md-4 col-lg-4" data-title="Beta paramter for maximum velocity">
-						β [v/c]
-					</div>
-					<div class="col-8 col-sm-8 col-md-8 col-lg-8">
-						<input type="" class="form-control" id="beta" placeholder="β [v/c]" readonly>
-					</div>
-				</div>
 
-				<div class="form-row  mb-3">
-					<div class="col-4 col-sm-4 col-md-4 col-lg-4" data-title="Lorentz factor for the maximum velocity">
-						γ [1/√(1 - β²)]
-					</div>
-					<div class="col-8 col-sm-8 col-md-8 col-lg-8">
-						<input type="" class="form-control" id="gamma" placeholder="γ [1/√(1 - β²)]" readonly>
-					</div>
+			<div class="form-row mb-3">
+				<div class="col-4 col-sm-4 col-md-4 col-lg-4">
+					Distance : 
+				</div>
+				<div class="col-6 col-sm-6 col-md-6 col-lg-6">
+					<input type="text" placeholder="Distance" id="distance" class="form-control" value="10">
+				</div>
+				<div class="col-md-2 col-lg-2 col-sm-2 col-2">
+					<select id="dist-units" class="custom-select">
+						<option value="m" selected>m</option>
+						<option value="km">km</option>
+						<option value="ft">ft</option>
+						<option value="yd">yd</option>
+						<option value="mile">mile</option>
+						<option value="ly" selected>ly</option>
+						<option value="au">au</option>
+						<option value="parsec">parsec</option>
+
+					</select>
 				</div>
 			</div>
-			<div>
 
-				<label>
-					<input type="checkbox" name="mode" id="mode">
-					Advanced mode
-				</label>
+			<div class="form-row mb-3">
+				<div class="col-4 col-sm-4 col-md-4 col-lg-4" 
+                  data-title="Do tou want to stop at destination point? "
+				>
+					Aim 
+				</div>
+				<div class="col-8 col-sm-8 col-md-8 col-lg-8">
+				<select id="aim" class="custom-select">
+					<option value="">Aim</option>
+					<option value="stop">Arrive at destination and stop</option>
+					<option value="full-speed">Arrive at destination at full speed</option>
+				</select>
+			</div>
+			</div>
+
+			<div class="form-row mb-3">
+				<div class="col-4 col-sm-4 col-md-4 col-lg-4"
+                  data-title="Einstein's special relativity or Newton's physics" 
+				>
+					Calculation Mode
+				</div>
+				<div class="col-8 col-sm-8 col-md-8 col-lg-8">
+				<select id="model" class="custom-select">
+					<option value="">Universe Model</option>
+					<option value="einstein">Einstein's universe</option>
+					<option value="newton">
+						Newton's universe
+					</option>
+				</select>
+			</div>
+			</div>
+
+		</form>
+
+		<h1 class="bg-light border-top"> Journey : </h1>
+		<div class="form-row js-time mb-3">
+			
+			<div class="col-4 col-sm-4 col-md-4 col-lg-4">
+					Time passed :
+			</div>
+
+			<div class="col-6 col-sm-6 col-md-6 col-lg-6">
+				<input type="text" class="form-control" placeholder="Time passed" id="time" readOnly>
+			</div>
+
+			<div class="col-md-2 col-lg-2 col-sm-2">
+				<select class="custom-select" id="time-units">
+					<option value="sec">sec</option>
+					<option value="min">min</option>
+					<option value="hrs">hrs</option>
+					<option value="dys">dys</option>
+					<option value="week">week</option>
+					<option value="month">month</option>
+					<option value="yrs" selected>yrs</option>
+				</select>
 			</div>
 		</div>
 
-		<script type="text/javascript" src="src/data.js"></script>
-		<script type="text/javascript" src="src/unit_convrt_funcs.js"></script>
-		<script type="text/javascript" src="src/handle_view_change.js"></script>
-		<script type="text/javascript" src="src/results_calc_funcs.js"></script>
-		<script type="text/javascript" src="src/handle_unit_change.js"></script>
-		<script type="text/javascript" src="src/on_data_change.js"></script>
-		<script type="text/javascript" src="src/handle_advanced_mode_view.js"></script>
+		<div class="form-row mb-3">
+			<div class="col-4 col-sm-4 col-md-4 col-lg-4">
+				
+					Maximum velocity :
+			</div>
+			<div class="col-6 col-sm-6 col-md-6 col-lg-6">
+				<input type="text" class="form-control" placeholder="Maximum Vellocity" id="velocity" readOnly>
+			</div>
+			<div class="col-md-2 col-lg-2 col-sm-2 ">
+				<select class="custom-select" id="velocity-units">
+					<option value="m/s">m/s</option>
+					<option value="km/h">km/h</option>
+					<option value="ft/s">ft/s</option>
+					<option value="mile/h">mile/h</option>
+					<option value="km/s">km/s</option>
+					<option value="mile/s">mile/s</option>
+					<option value="c" selected>c</option>
+				</select>
+			</div>
+		</div>
 
-	</body>
+		<div class="form-row mb-3">
+			<div class="col-4 col-sm-4 col-md-4 col-lg-4"
+             data-title="assuming 100% efficiency" 
+			>
+				
+					Required fuel mass :
+				</div>
+				<div class="col-6 col-sm-6 col-md-6 col-lg-6">
+				<input type="text" class="form-control" 
+				placeholder="Required fuel mass" id="fuel" readOnly>
+			</div>
+
+			<div class="col-md-2 col-lg-2 col-sm-2 col-2">
+				<select id="fuel-units" class="custom-select">
+					<option value="kg"> Kg</option>
+					<option value="t" selected> tons </option>
+					<option value="Ib"> Ib</option>
+					<option value="stone">stones</option>
+					<option value="USton"> US ton</option>
+					<option value="LongTon"> imperial tons </option>
+				</select>
+			</div>
+		</div>
+         <div class="advanced-mode">
+		<div class="form-row  my-3">
+			<div class="col-4 col-sm-4 col-md-4 col-lg-4"
+            data-title="Required fuel mass multiplied by c²" 
+			>
+				Fuel energy equivalent :
+			</div>
+			<div class="col-6 col-sm-6 col-md-6 col-lg-6">
+				<input type="" class="form-control" id="FEK" placeholder="Fuel energy equivalent" readonly>
+			</div>
+			<div class="col-2 col-sm-2 col-md-2 col-lg-2">
+				<select class="custom-select" id="fuel-energy-units">
+					<option value="j">J</option>
+					<option value="mj">MJ</option>
+					<option value="ft-ibs">ft-Ibs</option>
+					<option value="12j">10¹² J</option>
+					<option value="15j">10¹⁵ J</option>
+					<option value="18j">10¹⁸ J</option>
+					<option value="21j" selected>10²¹ J</option>
+					<option value="24j">10²⁴ J</option>
+
+				</select>
+			</div>
+		</div>
+		<div class="form-row  mb-3">
+			<div class="col-4 col-sm-4 col-md-4 col-lg-4">
+				Maximum kenetic energy
+			</div>
+			<div class="col-6  col-sm-6 col-md-6 col-lg-6">
+				<input type="" class="form-control" id="MKE" placeholder="Maximum kenetic energy" readonly>
+			</div>
+			<div class="col-2 col-sm-2 col-md-2 col-lg-2">
+				<select class="custom-select" id="max-kenergy-units">
+					<option value="j">J</option>
+					<option value="kj">KJ</option>
+					<option value="mj" selected>MJ</option>
+					<option value="wh">Wh</option>
+					<option value="kwh">KWh</option>
+					<option value="mwh">MWh</option>
+					<option value="ft-ibs">ft-Ibs</option>
+					
+				</select>
+			</div>
+		</div>
+	</div>
+	<div id="advanced-einstein-mode">
+		<div class="form-row  mb-3">
+			<div class="col-4 col-sm-4 col-md-4 col-lg-4"
+              data-title="Beta paramter for maximum velocity" 
+			>
+				β [v/c]
+			</div>
+			<div class="col-8 col-sm-8 col-md-8 col-lg-8">
+				<input type="" class="form-control" id="beta" 
+				placeholder="β [v/c]" readonly>
+			</div>
+		</div>
+
+		<div class="form-row  mb-3">
+			<div class="col-4 col-sm-4 col-md-4 col-lg-4"
+            data-title="Lorentz factor for the maximum velocity" 
+			>
+				γ [1/√(1 - β²)]
+			</div>
+			<div class="col-8 col-sm-8 col-md-8 col-lg-8">
+				<input type="" class="form-control" id="gamma" 
+				placeholder="γ [1/√(1 - β²)]" readonly>
+			</div>
+		</div>
+	</div>
+		<div>
+
+          <label>
+          	<input type="checkbox" name="mode" id="mode">
+          	Advanced mode
+          </label>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="src/data.js"></script>
+	<script type="text/javascript" src="src/kernel.js"></script>
+	<script type="text/javascript" src="src/unit_convrt_funcs.js"></script>
+	<script type="text/javascript" src="src/handle_view_change.js"></script>
+	<script type="text/javascript" src="src/results_calc_funcs.js"></script>
+	<script type="text/javascript" src="src/handle_unit_change.js"></script>
+	<script type="text/javascript" src="src/on_data_change.js"></script>
+	<script type="text/javascript" src="src/handle_advanced_mode_view.js"></script>
+
+</body>
 
 </html>

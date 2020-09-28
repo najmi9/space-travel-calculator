@@ -1,10 +1,10 @@
-const format = number => {
-	if (number < 0.001) {
-		return number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-	} else {
-		return new Intl.NumberFormat().format(number);
-	}
-}
+const format = number =>{
+	if(number<0.001){
+		return number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+	}else{
+		return new Intl.NumberFormat().format(number)
+        }
+}	
 
 let handleAccUnitChange = (newUnit, previousUnit) => {
 	if (newUnit == previousUnit) {
@@ -19,10 +19,11 @@ const handleMassUnitChange = (newUnit, previousUnit) => {
 		return 1;
 	}
 	const kg = {
-		'kg': 1, 't': 1000, 'Ib': 1 / 2.2046, 'stone': 6.35,
+		'kg': 1, 't': 1000, 'Ib': 1 / 2.046, 'stone': 6.35,
 		'USton': 907.2, 'LongTon': 1016
 	};
-	return kg[previousUnit] / kg[newUnit];
+
+	return  kg[previousUnit] / kg[newUnit];
 };
 const handleDistUnitChange = (newUnit, previousUnit) => {
 	if (previousUnit == newUnit) {
@@ -52,12 +53,10 @@ const handleTimeUnitChange = (newUnit, previousUnit) => {
 };
 
 const handleVelocityUnitChange = (newUnit, previousUnit) => {
-
+	
 	if (previousUnit == newUnit) {
 		return 1;
 	}
-
-	const c = 300000000;
 	const ms = {
 		'm/s': 1, 'km/h': 1000 / 3600, 'ft/s': 0.3048, 'mile/h': 1609.3 / 3600
 		, 'c': c, 'km/s': 1000, 'mile/s': 1609.3
@@ -67,16 +66,16 @@ const handleVelocityUnitChange = (newUnit, previousUnit) => {
 };
 
 
-const handleEnergyUnit = (newUnit, previousUnit) => {
-	if (newUnit == previousUnit) {
-		return 1;
-	}
-	const p = n => Math.pow(10, n);
+const handleEnergyUnit = (newUnit, previousUnit) =>{
+  if (newUnit == previousUnit){
+  	  return 1;
+  }
+  const p = n => Math.pow(10, n);
 
-	const j = {
-		'j': 1, 'mj': p(6), 'ft-ibs': 1.355818, '12j': p(12), '15j': p(15),
-		'18j': p(18), '21j': p(21), '24j': p(24), 'kj': p(3), 'wh': 3600,
-		'kwh': 3600 * p(3), 'mwh': 3600 * p(6)
-	}
-	return j[previousUnit] / j[newUnit];
+  const j = {
+  	'j':1, 'mj':p(6), 'ft-ibs':1.355818, '12j':p(12), '15j':p(15),
+  	'18j':p(18), '21j':p(21), '24j':p(24), 'kj':p(3), 'wh':3600 ,
+  	'kwh':3600*p(3) , 'mwh' :3600*p(6)
+  }
+  return j[previousUnit] / j[newUnit];
 }
