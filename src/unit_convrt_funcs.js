@@ -77,7 +77,12 @@ const handleEnergyUnit = (newUnit, previousUnit) =>{
   }
   return j[previousUnit] / j[newUnit];
 }
-
-/*module.exports = {
-	handleEnergyUnit
+/*
+module.exports = {
+	handleEnergyUnit,
+	handleVelocityUnitChange,
+	handleTimeUnitChange,
+	handleDistUnitChange,
+	handleMassUnitChange,
+	handleAccUnitChange,
 }*/
