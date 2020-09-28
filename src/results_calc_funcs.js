@@ -14,10 +14,7 @@ const getResult = (timeCulculator, veloCalculator, fuelCalculator,
 // function exist in data.js
 const {a, m, d, AccUnit, MassUnit, DistUnit, timeUnit, veloUnit, 
     fuelUnit, maxKEUnit, fuelEnergyUnit  }=getDataAndUnits();
-
- // 
- // Test That a, m and d are float;
- // 
+    if(!a||!m||!d){return;}
     //----part2 ----
     const AccInStandartUnit = a * handleAccUnitChange('m/s²', AccUnit);
     const MassInStandartUnit = m * handleMassUnitChange('kg', MassUnit);
@@ -28,18 +25,14 @@ const {a, m, d, AccUnit, MassUnit, DistUnit, timeUnit, veloUnit,
     const VInStandartUnit = veloCalculator(DistInStandartUnit, AccInStandartUnit);
     const FInStandartUnit = fuelCalculator(DistInStandartUnit, AccInStandartUnit, MassInStandartUnit);
     //part 5 -----
-     console.log(document.querySelector("input#time").value)
-    //
     document.querySelector("input#time").value = format(TInStandartUnit * handleTimeUnitChange(timeUnit, 'sec'));
     document.querySelector("input#velocity").value = format(VInStandartUnit * handleVelocityUnitChange(veloUnit, 'm/s'));
     document.querySelector("input#fuel").value = format(FInStandartUnit * handleMassUnitChange(fuelUnit, 'kg'));
 
     // Newton model advanced mode
      function handleAvancedMode() {
-  
     //caculate enery in standard unit; 
         const fuelEUS = fuelEE(DistInStandartUnit, AccInStandartUnit, MassInStandartUnit);
-
         const MKEStandard  = maxKE(DistInStandartUnit, AccInStandartUnit, MassInStandartUnit);
     //show result with the apropriate units; 
         document.querySelector("input#MKE").value=format(MKEStandard * handleEnergyUnit(maxKEUnit, 'j'));
@@ -59,7 +52,6 @@ const {a, m, d, AccUnit, MassUnit, DistUnit, timeUnit, veloUnit,
         document.querySelector("input#gamma").value=format(gamma(DistInStandartUnit, AccInStandartUnit));
     } 
 }
-
 
 const calculateNewtonStop = () => {
 

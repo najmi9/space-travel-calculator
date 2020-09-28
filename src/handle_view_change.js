@@ -3,7 +3,7 @@ const handleTargetChange = (value) => {
 	const inputDist = document.querySelector("input#distance");
 	const distUnit = document.querySelector("select#dist-units").value;
 	const factor = handleDistUnitChange(distUnit, 'm');
-	inputDist.value =format(factor * parseInt(value));
+	inputDist.value =format1(factor * parseInt(value));
 }
 
 const dest = document.getElementById('destination');
@@ -18,14 +18,14 @@ dest.onchange = ({ currentTarget }) => {
 
 	const selectStar = document.querySelector("select#stars");
 	const selectExo = document.querySelector("select#exoplanets");
+	const selectPlnt = document.querySelector("select#planets"); 
 
 	if (currentTarget.value == "Exoplanet") {
 		if (selectExo) {
 			return;
 		}
-		if (selectStar) {
-			element.removeChild(selectStar)
-		}
+		if (selectStar) { element.removeChild(selectStar); }
+		if (selectPlnt) { element.removeChild(selectPlnt); }
 		exoplanets.forEach((ele) => {
 			let newOption = new Option(ele.exoplanet, ele.distance);
 			select.setAttribute("id", "exoplanets")
@@ -42,12 +42,29 @@ dest.onchange = ({ currentTarget }) => {
 		if (selectStar) {
 			return;
 		}
-		if (selectExo) {
-			element.removeChild(selectExo)
-		}
+		if (selectExo) { element.removeChild(selectExo); }
+		if (selectPlnt) { element.removeChild(selectPlnt); }
 		starsGlaxies.forEach(ele => {
 			let newOption = new Option(ele.star, ele.distance);
 			select.setAttribute("id", "stars");
+			select.appendChild(newOption);
+		});
+
+		select.onchange = ({ currentTarget }) => {
+			handleTargetChange(currentTarget.value);
+			const selectedModel = document.querySelector("select#model").value;
+            const selectedAim = document.querySelector("select#aim").value;
+            calculResult(selectedAim, selectedModel);
+		}
+	}else if (currentTarget.value == "Planet Or Dwarf") {
+		if (selectPlnt) {
+			return;
+		}
+		if (selectExo) { element.removeChild(selectExo); }
+		if (selectStar) { element.removeChild(selectStar); }
+		PlantesOrDwarf.forEach(ele => {
+			let newOption = new Option(ele.planet, ele.distance);
+			select.setAttribute("id", "planets");
 			select.appendChild(newOption);
 		});
 
@@ -62,7 +79,7 @@ dest.onchange = ({ currentTarget }) => {
 	element.appendChild(select);
 }
 
-// change the result view according to the model, if ti's for
+// change the result view according to the model, if it's for
 // Einstein or Newton
 const changeResultView = (currentTarget) => {
 	if (currentTarget.vlaue == "") {
@@ -75,6 +92,7 @@ const changeResultView = (currentTarget) => {
 		const div = document.querySelector("div.js-time");
 		div.firstElementChild.innerHTML = "Time passed in Earth"
 		div.children[1].firstElementChild.setAttribute("placeholder", "time passed in earth")
+		div.children[1].firstElementChild.setAttribute("data-title", "Time passed in the resting frame or refrence, it could be an observer on Earth.")
 		const cln = div.cloneNode(true);
 
 		cln.firstElementChild.innerHTML = "Time passed in spaceship"

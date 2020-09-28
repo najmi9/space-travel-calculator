@@ -11,8 +11,8 @@
 </head>
 
 <body>
-	<div class="main container">
-		<h1> Prepare for travel : </h1>
+	<div class="main container mt-2">
+		<h1 class="bg-light border-top"> Prepare for travel : </h1>
 		<form>
 			<div class="form-row my-3">
                 <div class="col-4 col-sm-4 col-md-4 col-lg-4">
@@ -33,7 +33,9 @@
 			</div>
 
 			<div class="form-row mb-3">
-				<div class="col-4 col-sm-4 col-md-4 col-lg-4">
+				<div class="col-4 col-sm-4 col-md-4 col-lg-4"
+                  data-title="Mass of Spaceship excluding fuel"
+				>
 					Spaceship mass : 
 				</div>
 				<div class="col-6 col-sm-6 col-md-6 col-lg-6">
@@ -52,14 +54,17 @@
 			</div>
 
 			<div class="form-row mb-3">
-				<div class="col-4 col-sm-4 col-md-4 col-lg-4">
+				<div class="col-4 col-sm-4 col-md-4 col-lg-4"
+                 data-title="Select a destination or type in distance by hand" 
+				>
 					Destination : 
 				</div>
 				<div class="col-4 col-sm-4 col-md-4 col-lg-4">
 					<select id="destination" class="custom-select">
 						<option value="">Destination</option>
-						<option value="Star Or Galaxy">Star Or Galaxy</option>
+						<option value="Star Or Galaxy">Star or Galaxy</option>
 						<option value="Exoplanet">Exoplanet</option>
+						<option value="Planet Or Dwarf"> Planet or Dwarf</option>
 					</select>
 				</div>
 
@@ -91,14 +96,27 @@
 			</div>
 
 			<div class="form-row mb-3">
+				<div class="col-4 col-sm-4 col-md-4 col-lg-4" 
+                  data-title="Do tou want to stop at destination point? "
+				>
+					Aim 
+				</div>
+				<div class="col-8 col-sm-8 col-md-8 col-lg-8">
 				<select id="aim" class="custom-select">
 					<option value="">Aim</option>
 					<option value="stop">Arrive at destination and stop</option>
 					<option value="full-speed">Arrive at destination at full speed</option>
 				</select>
 			</div>
+			</div>
 
 			<div class="form-row mb-3">
+				<div class="col-4 col-sm-4 col-md-4 col-lg-4"
+                  data-title="Einstein's special relativity or Newton's physics" 
+				>
+					Calculation Mode
+				</div>
+				<div class="col-8 col-sm-8 col-md-8 col-lg-8">
 				<select id="model" class="custom-select">
 					<option value="">Universe Model</option>
 					<option value="einstein">Einstein's universe</option>
@@ -107,10 +125,11 @@
 					</option>
 				</select>
 			</div>
+			</div>
 
 		</form>
 
-		<h1> Journey : </h1>
+		<h1 class="bg-light border-top"> Journey : </h1>
 		<div class="form-row js-time mb-3">
 			
 			<div class="col-4 col-sm-4 col-md-4 col-lg-4">
@@ -156,7 +175,9 @@
 		</div>
 
 		<div class="form-row mb-3">
-			<div class="col-4 col-sm-4 col-md-4 col-lg-4">
+			<div class="col-4 col-sm-4 col-md-4 col-lg-4"
+             data-title="assuming 100% efficiency" 
+			>
 				
 					Required fuel mass :
 				</div>
@@ -165,7 +186,7 @@
 				placeholder="Required fuel mass" id="fuel" readOnly>
 			</div>
 
-			<div class="col-md-2 col-lg-2 col-sm-26">
+			<div class="col-md-2 col-lg-2 col-sm-2 col-2">
 				<select id="fuel-units" class="custom-select">
 					<option value="kg"> Kg</option>
 					<option value="t" selected> tons </option>
@@ -178,7 +199,9 @@
 		</div>
          <div class="advanced-mode">
 		<div class="form-row  my-3">
-			<div class="col-4 col-sm-4 col-md-4 col-lg-4">
+			<div class="col-4 col-sm-4 col-md-4 col-lg-4"
+            data-title="Required fuel mass multiplied by c²" 
+			>
 				Fuel energy equivalent :
 			</div>
 			<div class="col-6 col-sm-6 col-md-6 col-lg-6">
@@ -221,7 +244,9 @@
 	</div>
 	<div id="advanced-einstein-mode">
 		<div class="form-row  mb-3">
-			<div class="col-4 col-sm-4 col-md-4 col-lg-4">
+			<div class="col-4 col-sm-4 col-md-4 col-lg-4"
+              data-title="Beta paramter for maximum velocity" 
+			>
 				β [v/c]
 			</div>
 			<div class="col-8 col-sm-8 col-md-8 col-lg-8">
@@ -231,7 +256,9 @@
 		</div>
 
 		<div class="form-row  mb-3">
-			<div class="col-4 col-sm-4 col-md-4 col-lg-4">
+			<div class="col-4 col-sm-4 col-md-4 col-lg-4"
+            data-title="Lorentz factor for the maximum velocity" 
+			>
 				γ [1/√(1 - β²)]
 			</div>
 			<div class="col-8 col-sm-8 col-md-8 col-lg-8">
@@ -254,10 +281,7 @@
 	<script type="text/javascript" src="src/handle_view_change.js"></script>
 	<script type="text/javascript" src="src/results_calc_funcs.js"></script>
 	<script type="text/javascript" src="src/handle_unit_change.js"></script>
-	<script type="text/javascript" src="src/on_distance_change.js"></script>
-	<script type="text/javascript" src="src/on_acc_change.js"></script>
-	<script type="text/javascript" src="src/on_aim_change.js"></script>
-	<script type="text/javascript" src="src/on_universe_model_change.js"></script>
+	<script type="text/javascript" src="src/on_data_change.js"></script>
 	<script type="text/javascript" src="src/handle_advanced_mode_view.js"></script>
 
 </body>

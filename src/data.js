@@ -26,6 +26,24 @@ const exoplanets = [
     { 'exoplanet': 'Kepler-442b', 'distance': 12219440120000000000 },
     { 'exoplanet': 'Kepler-443b', 'distance': 24030178000000000000 }
 ];
+const PlantesOrDwarf = [
+    {'planet' :'Sun' , 'distance': 149597870700},
+    {'planet' : 'Mars' , 'distance':78340000000 },
+    {'planet' :'Jupiter' , 'distance':628730000000},
+    {'planet' :'Saturn' , 'distance':1275000000000 },
+    {'planet' :'Uranus' , 'distance': 2723950000000},
+    {'planet' :'Neptune' , 'distance': 4351400000000},
+    {'planet' :'Venus' , 'distance': 41400000000},
+    {'planet' :'Mercury' , 'distance': 91691000000},
+    {'planet' :'Barnard\'s Star' , 'distance': 56364012390000000},
+    {'planet': 'Wolf 359', 'distance': 74323259200000000},
+    {'planet': 'Lalande 21185', 'distance': 78590034900000000},
+    {'planet': 'Luyten 726-8', 'distance': 83169013700000000},
+    {'planet': 'Lacaille 9352', 'distance': 101429110770000000},
+
+];
+
+
 //get user data and selected units
 function getDataAndUnits() {
      //----part1

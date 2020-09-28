@@ -1,5 +1,9 @@
- const format = number => new Intl.NumberFormat().format(number)
+const format = number => new Intl.NumberFormat().format(number)
    
+function format1(num) {
+  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+} 
+
 let handleAccUnitChange = (newUnit, previousUnit) => {
 	if (newUnit == previousUnit) {
 		return 1;

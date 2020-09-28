@@ -16,7 +16,7 @@ const handleChange = (input, newUnit, previousUnit, handleUnit) => {
   }
 
   const factor = handleUnit(newUnit, previousUnit);
-  input.value = parseFloat(input.value.replaceAll(',', '')) * factor;
+  input.value = format1(parseFloat(input.value.replaceAll(',', '')) * factor);
   
 }
 
