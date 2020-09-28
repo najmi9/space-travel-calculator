@@ -2,25 +2,16 @@
 # Imad Najmi
 ___
 
-# Used equations are : 
-| Model/Aim            | Einstein's Model | Newton's Model                                                                                            |
-| -------------------- | ---------------- | --------------------------------------------------------------------------------------------------------- |
-| Arrive at Full Speed |                  | time= $2*\sqrt(d/a)$, velocity =  sqrt(a*d), fuel =  (m * a * d / (2*c * c)) + Math.sqrt(a * d) * m / c |
-| Arrive and Stop      |                  |                                                                                                           |
 contact me  : imadnajmi9@gmail.com
 
-[List_of_nearest_stars_and_brown_dwarfs#List](https://en.wikipedia.org/wiki/List_of_nearest_stars_and_brown_dwarfs#List)
+#Used Equations
 
 ```javascript
-
-const calculateNewtonStop = () => {
-
+    // Newton's Model, Arrived and Stop
     const timeCulculator = (d, a) => (2*Math.sqrt(d/a));
     const veloCulculator = (d, a) => (Math.sqrt(a * d));
-    const fuelCulculator = (d, a, m) => {
-        return ((m * a * d / (2*c * c)) + Math.sqrt(a * d) * m / c);
-    };
-      // advanced mode 
+    const fuelCulculator = (d, a, m) =>((m * a * d / (2*c * c)) + Math.sqrt(a * d) * m / c);
+    // advanced mode 
     const maxKE =  (d, a, m) =>  {
         const v = veloCulculator(d, a);
         return (m * v * v / 2);
@@ -29,10 +20,7 @@ const calculateNewtonStop = () => {
         const fuel = fuelCulculator(d, a, m);
         return fuel * c * c;
     }
-    getResult(timeCulculator, veloCulculator, fuelCulculator, null, maxKE, fuelEE);
-}
-
-const calculateNewtonSpeed = () => {
+  // Newton's Model Arrived at full speed
     const timeCulculator = (d, a) => (Math.sqrt(2 * d / a));
     const veloCulculator = (d, a) => (Math.sqrt(2 * a * d));
     const fuelCulculator = (d, a, m) => ((m * a * d / (2*c * c)) + Math.sqrt(a * d) * m / c);
@@ -45,12 +33,7 @@ const calculateNewtonSpeed = () => {
         const fuel = fuelCulculator(d, a, m);
         return fuel * c * c;
     }
-    getResult(timeCulculator, veloCulculator, fuelCulculator, null, maxKE, fuelEE);
-
-}
-
-
-const calculateEinsteinSpeed = () => {
+   // Einstein's Model Arrived at full speed
     const timeInEarthCulculator = (d, a) => Math.sqrt((d * d / (c * c) + 2 * d / a));
     const veloCulculator = (d, a) => {
         const t = timeInEarthCulculator(d, a);
@@ -80,11 +63,8 @@ const calculateEinsteinSpeed = () => {
         const fuel = fuelCulculator(d, a, m);
         return fuel * c * c;
     }
-    getResult(timeInEarthCulculator, veloCulculator, fuelCulculator, timeInSpaceshipCalculator, maxKE, fuelEE, beta, gamma);
-
-}
-
-const catculateEinsteinStop = () => {
+    
+    // Einstein's Model Arrived and Stop
     const timeInEarthCulculator = (d, a) => Math.sqrt((d * d / (c * c) + 4 * d / a));
     const veloCulculator = (d, a) => {
         const t = timeInEarthCulculator(d, a);
@@ -113,7 +93,5 @@ const catculateEinsteinStop = () => {
         const fuel = fuelCulculator(d, a, m);
         return fuel * c * c;
     }
-    getResult(timeInEarthCulculator, veloCulculator, fuelCulculator, timeInSpaceshipCalculator, maxKE, fuelEE, beta, gamma);
-}
 
 ```
