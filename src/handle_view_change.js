@@ -3,7 +3,12 @@ const handleTargetChange = (value) => {
 	const inputDist = document.querySelector("input#distance");
 	const distUnit = document.querySelector("select#dist-units").value;
 	const factor = handleDistUnitChange(distUnit, 'm');
-	inputDist.value =format1(factor * parseInt(value));
+
+	 if (factor * parseInt(value) <0.001) {
+    	inputDist.value =format1(factor * parseInt(value));
+     } else {
+  		inputDist.value =format(factor * parseInt(value));
+  	 }
 }
 
 const dest = document.getElementById('destination');
