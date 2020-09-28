@@ -7,7 +7,6 @@ const {
 	handleAccUnitChange,
 } = require('../src/unit_convrt_funcs.js');
 
-
 test('test mass unit converter function', ()=>{
    expect(handleMassUnitChange('kg', 't')).toBe(1000);
    expect(handleMassUnitChange('stone', 'kg')).toBeCloseTo(0.15747);

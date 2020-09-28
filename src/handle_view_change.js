@@ -3,14 +3,8 @@ const handleTargetChange = (value) => {
 	const inputDist = document.querySelector("input#distance");
 	const distUnit = document.querySelector("select#dist-units").value;
 	const factor = handleDistUnitChange(distUnit, 'm');
-
-	 if (factor * parseInt(value) <0.001) {
-    	inputDist.value =format1(factor * parseInt(value));
-     } else {
-  		inputDist.value =format(factor * parseInt(value));
-  	 }
+	inputDist.value = format(factor * parseInt(value));
 }
-
 const dest = document.getElementById('destination');
 const element = document.getElementById('stars-or-exoplanets');
 
@@ -23,7 +17,7 @@ dest.onchange = ({ currentTarget }) => {
 
 	const selectStar = document.querySelector("select#stars");
 	const selectExo = document.querySelector("select#exoplanets");
-	const selectPlnt = document.querySelector("select#planets"); 
+	const selectPlnt = document.querySelector("select#planets");
 
 	if (currentTarget.value == "Exoplanet") {
 		if (selectExo) {
@@ -40,8 +34,8 @@ dest.onchange = ({ currentTarget }) => {
 		select.onchange = ({ currentTarget }) => {
 			handleTargetChange(currentTarget.value);
 			const selectedModel = document.querySelector("select#model").value;
-            const selectedAim = document.querySelector("select#aim").value;
-            calculResult(selectedAim, selectedModel);
+			const selectedAim = document.querySelector("select#aim").value;
+			calculResult(selectedAim, selectedModel);
 		}
 	} else if (currentTarget.value == "Star Or Galaxy") {
 		if (selectStar) {
@@ -58,10 +52,10 @@ dest.onchange = ({ currentTarget }) => {
 		select.onchange = ({ currentTarget }) => {
 			handleTargetChange(currentTarget.value);
 			const selectedModel = document.querySelector("select#model").value;
-            const selectedAim = document.querySelector("select#aim").value;
-            calculResult(selectedAim, selectedModel);
+			const selectedAim = document.querySelector("select#aim").value;
+			calculResult(selectedAim, selectedModel);
 		}
-	}else if (currentTarget.value == "Planet Or Dwarf") {
+	} else if (currentTarget.value == "Planet Or Dwarf") {
 		if (selectPlnt) {
 			return;
 		}
@@ -76,8 +70,8 @@ dest.onchange = ({ currentTarget }) => {
 		select.onchange = ({ currentTarget }) => {
 			handleTargetChange(currentTarget.value);
 			const selectedModel = document.querySelector("select#model").value;
-            const selectedAim = document.querySelector("select#aim").value;
-            calculResult(selectedAim, selectedModel);
+			const selectedAim = document.querySelector("select#aim").value;
+			calculResult(selectedAim, selectedModel);
 		}
 	}
 	element.setAttribute("class", "form-group");
