@@ -14,12 +14,8 @@ const handleChange = (input, newUnit, previousUnit, handleUnit) => {
   if (newUnit == previousUnit) {
     return;
   }
-
-  const factor = handleUnit(newUnit, previousUnit);
-  
-      input.value = format(parseFloat(input.value.replaceAll(',', '')) * factor);
-
-    
+  const factor = handleUnit(newUnit, previousUnit); 
+  input.value = format(parseFloat(input.value.replaceAll(',', '')) * factor);   
 }
 
 document.querySelector("select#acc-units").onchange = ({ currentTarget }) => {
@@ -70,5 +66,6 @@ document.querySelector("select#fuel-energy-units").onchange = ({ currentTarget }
 document.querySelector("select#max-kenergy-units").onchange = ({ currentTarget }) => {
   const me = document.querySelector("input#MKE");
   handleChange(me, currentTarget.value, previousMaxKEUnit, handleEnergyUnit);
+  previousMaxKEUnit = currentTarget.value;
 }
 

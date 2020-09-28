@@ -1,7 +1,7 @@
 const calculateNewtonStop = (d, a, m) => {
     const T = () => (2*Math.sqrt(d/a));
     const V = () => (Math.sqrt(a * d));
-    const F = () =>((m * a * d / (2*c * c)) + Math.sqrt(a * d) * m / c);
+    const F = () =>2*((m * a * d / (2*c * c)) + Math.sqrt(a * d) * m / c);
     const KE = () =>(m * a * d / 2);
     const FE = () => F() * c * c;
     return { 'T':T(), 'V':V(), 'F':F(), 'KE':KE(), 'FE':FE() };
@@ -10,7 +10,7 @@ const calculateNewtonStop = (d, a, m) => {
 const calculateNewtonSpeed = (d, a, m) => {
     const T = () => (Math.sqrt(2 * d / a));
     const V = () => (Math.sqrt(2 * a * d));
-    const F = () => ((m * a * d / (2*c * c)) + Math.sqrt(a * d) * m / c);
+    const F = () => ((m * a * d / (c * c)) + Math.sqrt(2*a * d) * m / c);
     const KE =  () =>(m * a * d );
     const FE = () => F() * c * c;
    return { 'T':T(), 'V':V(), 'F':F(), 'KE':KE(), 'FE':FE() };
